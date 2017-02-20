@@ -30,27 +30,9 @@ module.exports = (function () {
         PLUGINS.rename = require("gulp-rename");
         PLUGINS.gzip = require('gulp-gzip');
         PLUGINS.runSequence = require('run-sequence');
+        PLUGINS.htmlReplace = require('gulp-html-replace');
+        PLUGINS.replace = require('gulp-replace');
     })();
-
-    /**
-     *
-     */
-    function isValidType(type) {
-        var found;
-
-        found = false;
-
-        for (var key in ASSET_TYPES) {
-            if (ASSET_TYPES.hasOwnProperty(key)) {
-                if (ASSET_TYPES[key] === type.toLowerCase()) {
-                    found = true;
-                    break;
-                }
-            }
-        }
-
-        return found;
-    }
 
     /**
      *
@@ -80,6 +62,8 @@ module.exports = (function () {
         asset.params.rename = obj.params.rename || false;
         asset.params.min = obj.params.min || false;
         asset.params.gzip = obj.params.gzip || false;
+        asset.params.htmlReplace = obj.params.htmlReplace || false;
+        asset.params.replace = obj.params.replace || false;
 
         ASSETS.push(asset);
 
@@ -169,6 +153,28 @@ module.exports = (function () {
         // SASS.
         if (asset.params.sass) {
             stream = stream.pipe(PLUGINS.sass().on('error', PLUGINS.sass.logError));
+        }
+
+        // Replace.
+        if (asset.params.replace) {
+            var replace;
+
+            replace = asset.params.replace;
+
+            if (Array.isArray(replace)) {
+                replace.forEach(function (item) {
+                    if (Array.isArray(item)) {
+                        stream = stream
+                            .pipe(PLUGINS.replace(item[0], item[1]))
+                    }
+                })
+            }
+        }
+
+        // HTML Replace.
+        if (asset.params.htmlReplace) {
+            stream = stream
+                .pipe(PLUGINS.htmlReplace(asset.params.htmlReplace))
         }
 
         // Concat & Rename.
