@@ -10,9 +10,9 @@ rename = require("gulp-rename");
  *
  */
 gulp.task('build', function () {
-    return gulp.src('./src/gulper.js')
+    return gulp.src('./src/gulpury.js')
         .pipe(uglify())
-        .pipe(rename('gulper.min.js'))
+        .pipe(rename('gulpury.min.js'))
         .pipe(gulp.dest('./dist'));
 });
 
@@ -20,7 +20,7 @@ gulp.task('build', function () {
  *
  */
 gulp.task('watch', ['build'], function () {
-    gulp.watch('./src/gulper.js', ['build']);
+    gulp.watch('./src/gulpury.js', ['build']);
 });
 
 gulp.task('default', ['watch']);

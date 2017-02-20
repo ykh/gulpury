@@ -1,23 +1,27 @@
 {
-  "name": "gulper",
-  "version": "1.0.0",
-  "description": "",
-  "main": "gulpfile.js",
+  "name": "gulpury",
+  "version": "1.1.2",
+  "description": "Nice Module to Create Your Gulp Build-System Quick, Easy & Nifty!",
+  "main": "dist/gulpury.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
+  "author": "Yaser Khahani <yaserkh@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
     "del": "^2.2.2",
     "event-stream": "^3.3.4",
-    "gulp": "^3.9.1",
     "gulp-clean-css": "^2.3.2",
     "gulp-concat": "^2.6.1",
     "gulp-gzip": "^1.4.0",
+    "gulp-html-replace": "^1.6.2",
     "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^2.0.1",
     "run-sequence": "^1.2.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
   }
 }
