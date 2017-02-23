@@ -2,7 +2,7 @@
 
 **Gulpury is a [Gulp](https://github.com/gulpjs/gulp) plugin that helps you to write your tasks quick.**
 
-## Gulpury as a Wrapper Provides these Kind of Jobs**
+## Gulpury as a Wrapper Provides these Kind of Jobs
 
 - Copy Sources to Destination.
 - Compile Your SASS Files to CSS ([gulp-sass](https://github.com/dlmanning/gulp-sass)).
