@@ -1,12 +1,34 @@
 {
   "name": "gulpury",
-  "version": "1.1.2",
   "description": "Nice Module to Create Your Gulp Build-System Quick, Easy & Nifty!",
+  "version": "1.1.2",
   "main": "dist/gulpury.min.js",
+  "homepage": "https://github.com/ykh/gulpury",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ykh/gulpury"
+  },
+  "author": {
+    "name": "Yaser Khahani",
+    "email": "yaserkh@gmail.com",
+    "url": "http://yaserkh.ir"
+  },
+  "keywords": [
+    "gulp",
+    "build",
+    "stream",
+    "minify",
+    "concat",
+    "uglify",
+    "gzip",
+    "html_replace",
+    "replace",
+    "rename",
+    "sass"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Yaser Khahani <yaserkh@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "del": "^2.2.2",
