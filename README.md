@@ -6,13 +6,13 @@
 
 - Copy Sources to Destination.
 - Compile Your SASS Files to CSS ([gulp-sass](https://github.com/dlmanning/gulp-sass)).
-- Minify Your CSS Files with ([gulp-clean-css](https://github.com/scniro/gulp-clean-css)).
-- Minify/Uglify Your JS Files with ([gulp-uglify](https://github.com/terinjokes/gulp-uglify)).
-- Concat Files with ([gulp-concat](https://github.com/contra/gulp-concat)).
-- Rename Files with ([gulp-rename](https://github.com/hparra/gulp-rename)).
-- GZip Files with ([gulp-gzip](https://github.com/jstuckey/gulp-gzip)).
-- Replace String with another String in Your Text Files by Using ([gulp-replace](https://github.com/lazd/gulp-replace)).
-- Replace Block of String in Your Text Files by Using ([gulp-html-replace](https://github.com/VFK/gulp-html-replace)).
+- Minify Your CSS Files ([gulp-clean-css](https://github.com/scniro/gulp-clean-css)).
+- Minify/Uglify Your JS Files ([gulp-uglify](https://github.com/terinjokes/gulp-uglify)).
+- Concat Files ([gulp-concat](https://github.com/contra/gulp-concat)).
+- Rename Files ([gulp-rename](https://github.com/hparra/gulp-rename)).
+- GZip Files ([gulp-gzip](https://github.com/jstuckey/gulp-gzip)).
+- Replace String with another String in Your Text Files ([gulp-replace](https://github.com/lazd/gulp-replace)).
+- Replace Block of String in Your Text Files ([gulp-html-replace](https://github.com/VFK/gulp-html-replace)).
 
 ## List of Plugins
 
