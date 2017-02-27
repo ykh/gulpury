@@ -32,6 +32,7 @@ module.exports = (function () {
         PLUGINS.runSequence = require('run-sequence');
         PLUGINS.htmlReplace = require('gulp-html-replace');
         PLUGINS.replace = require('gulp-replace');
+        PLUGINS.sourcemaps = require('gulp-sourcemaps');
     })();
 
     /**
@@ -64,6 +65,7 @@ module.exports = (function () {
         asset.params.gzip = obj.params.gzip || false;
         asset.params.htmlReplace = obj.params.htmlReplace || false;
         asset.params.replace = obj.params.replace || false;
+        asset.params.sourcemaps = obj.params.sourcemaps || false;
 
         ASSETS.push(asset);
 
@@ -180,40 +182,51 @@ module.exports = (function () {
         // Concat & Rename.
         if (asset.params.rename) {
             stream = stream
-                .pipe(PLUGINS.concat(asset.params.rename))
-                .pipe(gulp.dest(asset.dest));
+                .pipe(PLUGINS.concat(asset.params.rename));
         }
 
-        switch (asset.type) {
-            case ASSET_TYPES.COPY:
-                stream = stream.pipe(gulp.dest(asset.dest));
-                break;
-            case ASSET_TYPES.CSS:
-                // Compress CSS.
-                if (asset.params.min) {
-                    stream = stream
-                        .pipe(PLUGINS.cleanCSS({compatibility: 'ie8'}))
-                        .pipe(PLUGINS.rename(asset.params.min))
-                        .pipe(gulp.dest(asset.dest));
-                }
-                break;
-            case ASSET_TYPES.JS:
-                // Make JS Ugly.
-                if (asset.params.min) {
-                    stream = stream
-                        .pipe(PLUGINS.uglify())
-                        .pipe(PLUGINS.rename(asset.params.min))
-                        .pipe(gulp.dest(asset.dest));
-                }
-                break;
+        // Source Maps Initialize.
+        if (asset.params.sourcemaps) {
+            stream = stream
+                .pipe(PLUGINS.sourcemaps.init())
+        }
+
+        // CSS.
+        if (asset.type === ASSET_TYPES.CSS) {
+            // Compress CSS.
+            if (asset.params.min) {
+                stream = stream
+                    .pipe(PLUGINS.cleanCSS({compatibility: 'ie8'}))
+                    .pipe(PLUGINS.rename(asset.params.min))
+                    .pipe(gulp.dest(asset.dest));
+            }
+        }
+
+        // JS.
+        if (asset.type === ASSET_TYPES.JS) {
+            // Make JS Ugly.
+            if (asset.params.min) {
+                stream = stream
+                    .pipe(PLUGINS.uglify())
+                    .pipe(PLUGINS.rename(asset.params.min))
+                    .pipe(gulp.dest(asset.dest));
+            }
         }
 
         // GZip.
         if (asset.params.gzip) {
-            stream = stream
+            // DO NOT Change Stream because of SourceMaps Conflicts.
+            stream
                 .pipe(PLUGINS.gzip())
                 .pipe(gulp.dest(asset.dest));
         }
+
+        // Source Maps Write.
+        if (asset.params.sourcemaps) {
+            stream = stream.pipe(PLUGINS.sourcemaps.write('.'));
+        }
+
+        stream.pipe(gulp.dest(asset.dest));
 
         return stream;
     }
