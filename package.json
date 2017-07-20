@@ -34,6 +34,7 @@
     "del": "^2.2.2",
     "event-stream": "^3.3.4",
     "gulp-clean-css": "^2.3.2",
+    "gulp-clone": "^1.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-gzip": "^1.4.0",
     "gulp-html-replace": "^1.6.2",
@@ -45,7 +46,6 @@
     "run-sequence": "^1.2.2"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-clone": "^1.0.0"
+    "gulp": "^3.9.1"
   }
 }
