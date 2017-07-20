@@ -1,7 +1,7 @@
 {
   "name": "gulpury",
   "description": "Nice Module to Create Your Gulp Build-System Quick, Easy & Nifty!",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "main": "dist/gulpury.min.js",
   "homepage": "https://github.com/ykh/gulpury",
   "repository": {
