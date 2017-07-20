@@ -1,7 +1,7 @@
 module.exports = (function () {
     var gulp;
     var ASSET_TYPES;
-    var ASSETS ;
+    var ASSETS;
     var PLUGINS;
 
     /**
@@ -33,6 +33,7 @@ module.exports = (function () {
         PLUGINS.htmlReplace = require('gulp-html-replace');
         PLUGINS.replace = require('gulp-replace');
         PLUGINS.sourcemaps = require('gulp-sourcemaps');
+        PLUGINS.clone = require('gulp-clone');
     })();
 
     /**
@@ -113,7 +114,7 @@ module.exports = (function () {
      * @param type
      * @param tasks
      */
-    function watchByType (type, tasks) {
+    function watchByType(type, tasks) {
         ASSETS.forEach(function (asset) {
             if (asset.type && ASSET_TYPES[type.toUpperCase()] && asset.type.toLowerCase() === type.toLowerCase()) {
                 gulp.watch(asset.src, tasks);
@@ -126,7 +127,7 @@ module.exports = (function () {
      * @param id
      * @param tasks
      */
-    function watchById (id, tasks) {
+    function watchById(id, tasks) {
         ASSETS.forEach(function (asset) {
             if (asset.id && asset.id === id) {
                 gulp.watch(asset.src, tasks);
@@ -215,8 +216,8 @@ module.exports = (function () {
 
         // GZip.
         if (asset.params.gzip) {
-            // DO NOT Change Stream because of SourceMaps Conflicts.
             stream
+                .pipe(PLUGINS.clone())
                 .pipe(PLUGINS.gzip())
                 .pipe(gulp.dest(asset.dest));
         }
